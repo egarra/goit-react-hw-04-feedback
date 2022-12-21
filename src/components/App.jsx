@@ -25,11 +25,11 @@ export const App = () => {
   };
 
   useEffect(() => {
-    setTotal(state => (state = good + bad + neutral));
+    setTotal(good + bad + neutral);
 
     total !== 0
-      ? setPositiveFeedback(state => (state = Math.round((good / total) * 100)))
-      : setPositiveFeedback(state => (state = 100));
+      ? setPositiveFeedback(Math.round((good / total) * 100))
+      : setPositiveFeedback(100);
   }, [good, neutral, bad]);
 
   const handleClick = e => {
