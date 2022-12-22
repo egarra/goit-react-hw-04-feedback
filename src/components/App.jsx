@@ -9,8 +9,9 @@ export const App = () => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
-  const [total, setTotal] = useState(0);
-  const [positiveFeedback, setPositiveFeedback] = useState(0);
+
+  const counTotalFeedBack = good + neutral + bad;
+  const countPositiveFeedBack = Math.round((good / counTotalFeedBack) * 100)
 
   const obj = {
     good,
@@ -20,8 +21,8 @@ export const App = () => {
 
   const itemObj = {
     ...obj,
-    total,
-    positiveFeedback,
+    total: counTotalFeedBack,
+    positiveFeedback: countPositiveFeedBack 
   };
 
   const handleClick = e => {
@@ -39,19 +40,14 @@ export const App = () => {
         console.log('non valid');
         break;
     }
-    setTotal(state => state + 1)
-    total !== 0
-    ? setPositiveFeedback(Math.round((good / total) * 100))
-    : setPositiveFeedback(100);
   };
-  const counTotalFeedBack = good + neutral + bad;
-  const PositiveFeedback = Math.round((good / total) * 100)
+
   return (
     <Container>
       <Section title="Please leave feedback">
         <Controls obj={obj} handleClick={handleClick} />
       </Section>
-      {total > 0 ? (
+      {itemObj.total > 0 ? (
           <Section title="Statistics">
             <Statistics obj={itemObj} />
           </Section>
