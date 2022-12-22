@@ -30,7 +30,7 @@ export const App = () => {
     total !== 0
       ? setPositiveFeedback(Math.round((good / total) * 100))
       : setPositiveFeedback(100);
-  }, [good, neutral, bad]);
+  }, [good, neutral, bad, total]);
 
   const handleClick = e => {
     switch (e.target.textContent.toUpperCase()) {
