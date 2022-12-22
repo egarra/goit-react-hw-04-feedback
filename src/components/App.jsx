@@ -44,7 +44,8 @@ export const App = () => {
     ? setPositiveFeedback(Math.round((good / total) * 100))
     : setPositiveFeedback(100);
   };
-
+  const counTotalFeedBack = good + neutral + bad;
+  const PositiveFeedback = Math.round((good / total) * 100)
   return (
     <Container>
       <Section title="Please leave feedback">
