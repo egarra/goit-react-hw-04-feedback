@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Controls } from 'components/Controls/Controls';
 import { Statistics } from 'components/Statistics/Statistics';
 import { Section } from './Section/Section';
@@ -24,14 +24,6 @@ export const App = () => {
     positiveFeedback,
   };
 
-  useEffect(() => {
-    setTotal(good + bad + neutral);
-
-    total !== 0
-      ? setPositiveFeedback(Math.round((good / total) * 100))
-      : setPositiveFeedback(100);
-  }, [good, neutral, bad, total]);
-
   const handleClick = e => {
     switch (e.target.textContent.toUpperCase()) {
       case 'GOOD':
@@ -47,6 +39,10 @@ export const App = () => {
         console.log('non valid');
         break;
     }
+    setTotal(state => state + 1)
+    total !== 0
+    ? setPositiveFeedback(Math.round((good / total) * 100))
+    : setPositiveFeedback(100);
   };
 
   return (
